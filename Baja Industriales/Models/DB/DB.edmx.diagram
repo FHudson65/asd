@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="aeafd94b4f654eb29ae32d463f3b57d4" Name="Diagram1">
+        <EntityTypeShape EntityType="BajaIndustrialesModel.Almacen" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BajaIndustrialesModel.Cliente" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BajaIndustrialesModel.Cotizacione" Width="1.5" PointX="7.5" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BajaIndustrialesModel.DetalleVenta" Width="1.5" PointX="10.5" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BajaIndustrialesModel.Empleado" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BajaIndustrialesModel.Producto" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BajaIndustrialesModel.Sucursal" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BajaIndustrialesModel.Venta" Width="1.5" PointX="5.25" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BajaIndustrialesModel.VistaInventario" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="BajaIndustrialesModel.FK__Almacen__Cod_Pro__2E1BDC42" ManuallyRouted="false" />
+        <AssociationConnector Association="BajaIndustrialesModel.FK__Almacen__Cod_Suc__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="BajaIndustrialesModel.FK__Ventas__Cod_Clie__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="BajaIndustrialesModel.FK__Cotizacio__Cod_V__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="BajaIndustrialesModel.FK__DetalleVe__Cod_P__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="BajaIndustrialesModel.FK__DetalleVe__Cod_V__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="BajaIndustrialesModel.FK__Empleados__Cod_S__2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="BajaIndustrialesModel.FK__Ventas__Cod_Empl__30F848ED" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BajaIndustrialesModel.VistaVenta" Width="1.5" PointX="5.375" PointY="0.75" IsExpanded="true" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

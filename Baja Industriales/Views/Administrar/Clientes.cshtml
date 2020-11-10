@@ -1,0 +1,48 @@
+﻿@model List<Baja_Industriales.Models.View_Model.ListClienteViewModel>
+@{
+    ViewBag.Title = "Clientes";
+}
+
+<h2>Clientes</h2>
+<div>
+    <pre>
+    <label class="control-label" for="form-group-select">Nombre:</label>               <input id="nombre" type="text" />                                                            <input class="btn btn-n" id="Agregar" type="submit" value="Agregar" width: 100px; height: 50px; onclick="location.href='@Url.Action("altaClientes", "AdministrarController")'"/>
+
+             
+
+    <label class="control-label" for="form-group-select">Correo:</label>               <input id="correo" type="text" />                                                            <input class="btn btn-n" id="Eliminar" type="button" value="Eliminar" width: 100px; height: 50px; />
+
+
+              
+    <label class="control-label" for="form-group-select">Teléfono:</label>             <input id="telefono" type="text" />                                                            <input class="btn btn-n" id="Modificar" type="button" value="Modificar" width: 100px; height: 50px; />
+
+
+    
+    <label class="control-label" for="form-group-select">RFC:</label>                  <input id="rfc" type="text" />                                                            <input class="btn btn-n" id="Buscar" type="button" value="Buscar" width: 100px; height: 50px; />
+                 
+    </pre>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <tr>
+                <th>Cod_Cliente</th>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Telefono</th>
+                <th>RFC</th>
+            </tr>
+            @foreach (var oElemento in Model)
+            {
+        <tr>
+            <td>@oElemento.Cod_Cliente</td>
+            <td>@oElemento.Nombre</td>
+            <td>@oElemento.Correo</td>
+            <td>@oElemento.Telefono</td>
+            <td>@oElemento.RFC</td>
+        </tr>
+            }
+        </table>
+    </div>
+</div>

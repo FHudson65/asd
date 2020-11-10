@@ -1,0 +1,62 @@
+﻿@model List<Baja_Industriales.Models.View_Model.ListVentasViewModel>
+@{
+    ViewBag.Title = "Ventas";
+}
+
+<h2>Ventas</h2>
+<body>
+    <div>
+        @*fecha*@
+        <label for="start">Fecha:</label>
+        <input type="date" id="start" name="trip-start" >
+        @*textbox de busqueda*@
+        <input style="float:right" class="input-group-sm" id="buscar" type="text" />
+        <label class="control-label" for="form-group-select">No. Empleado:</label><input id="numempleado" type="text" size="5" maxlength="10" />
+    </div>
+    <br />
+    <div class="form-group" style="float:right">
+        <input class="btn btn-n" id="Agregar" type="button" value="Agregar" />
+        <input class="btn btn-n" id="Modificar" type="button" value="Modificar" />
+        <input class="btn btn-n" id="Buscar" type="button" value="Buscar" />
+    </div>
+    <br />
+    <br />
+    <br />
+    <div>
+        <pre>
+<label class="control-label" for="form-group-select">Código de producto:</label>    <input id="cod_producto" type="text" />           <label class="control-label" for="form-group-select">Descripción:</label> <input id="descripcion" type="text" />             <label class="control-label" for="form-group-select">Cantidad:</label>   <input id="cantidad" type="text" />
+
+<label class="control-label" for="form-group-select">Precio:</label>                <input id="precio" type="text" />           <label class="control-label" for="form-group-select">IVA:</label>         <input id="iva" type="text" />
+
+        </pre>
+    </div>
+</body>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <tr>
+                <th>Cod_Venta</th>
+                <th>Cod_Empleado</th>
+                <th>Cod_Producto</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
+                <th>IVA</th>
+                <th>Total</th>
+                <th>Fecha</th>
+            </tr>
+            @foreach (var oElemento in Model)
+            {
+        <tr>
+            <td>@oElemento.Cod_Venta</td>
+            <td>@oElemento.Cod_Empleado</td>
+            <td>@oElemento.Cod_Producto</td>
+            <td>@oElemento.Cantidad</td>
+            <td>@oElemento.Precio</td>
+            <td>@oElemento.IVA</td>
+            <td>@oElemento.Total</td>
+            <td>@oElemento.Fecha</td>
+        </tr>
+            }
+        </table>
+    </div>
+</div>

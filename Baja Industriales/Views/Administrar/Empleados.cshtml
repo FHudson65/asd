@@ -1,0 +1,49 @@
+﻿@model List<Baja_Industriales.Models.View_Model.ListEmpleadosViewModel>
+@{
+    ViewBag.Title = "Empleados";
+}
+
+<h2>Empleados</h2>
+<div>
+    <pre>
+    <label class="control-label" for="form-group-select">Nombre:</label>                            <input id="nombre" type="text" />                 <label class="control-label" for="form-group-select">Tipo de usuario:</label>       <select id="tipouser"><option></option></select>
+           
+    <label class="control-label" for="form-group-select">Apellido Paterno:</label>                  <input id="apaterno" type="text" />                 <label class="control-label" for="form-group-select">Contraseña:</label>            <input id="cantidad" type="text" />
+
+
+
+    <label class="control-label" for="form-group-select">Apellido Materno:</label>                  <input id="amaterno" type="text" />                 <label class="control-label" for="form-group-select">Sucursal:</label>              <select id="sucursal"><option></option></select>
+        
+    <label class="control-label" for="form-group-select">Teléfono:</label>                          <input id="telefono" type="text" />                 <input class="btn btn-n" id="Agregar" type="button" value="Agregar" onclick="location.href='@Url.Action("Empleados", "AdministrarController")"/>     <input class="btn btn-n" id="Eliminar" type="button" value="Eliminar" onclick="" />    <input class="btn btn-n" id="Modificar" type="button" value="Modificar" onclick="" />    <input class="btn btn-n" id="Buscar" type="button" value="Buscar" onclick="" />
+
+    </pre>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <tr>
+                <th>Cod_Empleado</th>
+                <th>Tipo_Usuario</th>
+                <th>Contraseña</th>
+                <th>Nombre</th>
+                <th>A_Paterno</th>
+                <th>A_Materno</th>
+                <th>Telefono</th>
+                <th>Sucursal</th>
+            </tr>
+            @foreach (var oElemento in Model)
+            {
+                <tr>
+                    <td>@oElemento.Cod_Empleado</td>
+                    <td>@oElemento.Tipo_Usuario</td>
+                    <td>@oElemento.Contraseña</td>
+                    <td>@oElemento.Nombre</td>
+                    <td>@oElemento.A_Paterno</td>
+                    <td>@oElemento.A_Materno</td>
+                    <td>@oElemento.Telefono</td>
+                    <td>@oElemento.Cod_Sucursal</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BajaIndustrialesModelStoreContainer" CdmEntityContainer="BajaIndustrialesEntities4">
+    <EntitySetMapping Name="Almacens">
+      <EntityTypeMapping TypeName="BajaIndustrialesModel.Almacen">
+        <MappingFragment StoreEntitySet="Almacen">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Cod_Sucursal" ColumnName="Cod_Sucursal" />
+          <ScalarProperty Name="Cod_Producto" ColumnName="Cod_Producto" />
+          <ScalarProperty Name="Stock" ColumnName="Stock" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clientes">
+      <EntityTypeMapping TypeName="BajaIndustrialesModel.Cliente">
+        <MappingFragment StoreEntitySet="Cliente">
+          <ScalarProperty Name="Cod_Cliente" ColumnName="Cod_Cliente" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cotizaciones">
+      <EntityTypeMapping TypeName="BajaIndustrialesModel.Cotizacione">
+        <MappingFragment StoreEntitySet="Cotizaciones">
+          <ScalarProperty Name="Folio" ColumnName="Folio" />
+          <ScalarProperty Name="Nombre_Cliente" ColumnName="Nombre_Cliente" />
+          <ScalarProperty Name="Cod_Producto" ColumnName="Cod_Producto" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleVentas">
+      <EntityTypeMapping TypeName="BajaIndustrialesModel.DetalleVenta">
+        <MappingFragment StoreEntitySet="DetalleVenta">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Cod_Venta" ColumnName="Cod_Venta" />
+          <ScalarProperty Name="Cod_Producto" ColumnName="Cod_Producto" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="IVA" ColumnName="IVA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Empleados">
+      <EntityTypeMapping TypeName="BajaIndustrialesModel.Empleado">
+        <MappingFragment StoreEntitySet="Empleados">
+          <ScalarProperty Name="Cod_Empleado" ColumnName="Cod_Empleado" />
+          <ScalarProperty Name="Tipo_Usuario" ColumnName="Tipo_Usuario" />
+          <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="A_Paterno" ColumnName="A_Paterno" />
+          <ScalarProperty Name="A_Materno" ColumnName="A_Materno" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Cod_Sucursal" ColumnName="Cod_Sucursal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Productos">
+      <EntityTypeMapping TypeName="BajaIndustrialesModel.Producto">
+        <MappingFragment StoreEntitySet="Productos">
+          <ScalarProperty Name="Cod_Producto" ColumnName="Cod_Producto" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sucursals">
+      <EntityTypeMapping TypeName="BajaIndustrialesModel.Sucursal">
+        <MappingFragment StoreEntitySet="Sucursal">
+          <ScalarProperty Name="Cod_Sucursal" ColumnName="Cod_Sucursal" />
+          <ScalarProperty Name="Ubicacicon" ColumnName="Ubicacicon" />
+          <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ventas">
+      <EntityTypeMapping TypeName="BajaIndustrialesModel.Venta">
+        <MappingFragment StoreEntitySet="Ventas">
+          <ScalarProperty Name="Cod_Venta" ColumnName="Cod_Venta" />
+          <ScalarProperty Name="Cod_Empleado" ColumnName="Cod_Empleado" />
+          <ScalarProperty Name="Cod_Cliente" ColumnName="Cod_Cliente" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

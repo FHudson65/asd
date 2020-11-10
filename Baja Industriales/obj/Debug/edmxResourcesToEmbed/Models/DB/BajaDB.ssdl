@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BajaIndustrialesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Almacen">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cod_Sucursal" Type="int" />
+    <Property Name="Cod_Producto" Type="int" />
+    <Property Name="Stock" Type="int" />
+  </EntityType>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="Cod_Cliente" />
+    </Key>
+    <Property Name="Cod_Cliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" />
+    <Property Name="Correo" Type="varchar" MaxLength="50" />
+    <Property Name="Telefono" Type="int" />
+  </EntityType>
+  <EntityType Name="Cotizaciones">
+    <Key>
+      <PropertyRef Name="Folio" />
+    </Key>
+    <Property Name="Folio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre_Cliente" Type="varchar" MaxLength="100" />
+    <Property Name="Cod_Producto" Type="int" />
+    <Property Name="Cantidad" Type="int" />
+    <Property Name="Total" Type="int" />
+  </EntityType>
+  <EntityType Name="DetalleVenta">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cod_Venta" Type="int" />
+    <Property Name="Cod_Producto" Type="int" />
+    <Property Name="Cantidad" Type="int" />
+    <Property Name="Precio" Type="money" />
+    <Property Name="IVA" Type="money" />
+  </EntityType>
+  <EntityType Name="Empleados">
+    <Key>
+      <PropertyRef Name="Cod_Empleado" />
+    </Key>
+    <Property Name="Cod_Empleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Tipo_Usuario" Type="varchar" MaxLength="50" />
+    <Property Name="Contraseña" Type="char" MaxLength="15" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" />
+    <Property Name="A_Paterno" Type="varchar" MaxLength="50" />
+    <Property Name="A_Materno" Type="varchar" MaxLength="50" />
+    <Property Name="Telefono" Type="char" MaxLength="10" />
+    <Property Name="Cod_Sucursal" Type="int" />
+  </EntityType>
+  <EntityType Name="Productos">
+    <Key>
+      <PropertyRef Name="Cod_Producto" />
+    </Key>
+    <Property Name="Cod_Producto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+    <Property Name="Precio" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="Sucursal">
+    <Key>
+      <PropertyRef Name="Cod_Sucursal" />
+    </Key>
+    <Property Name="Cod_Sucursal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ubicacicon" Type="varchar" MaxLength="100" />
+    <Property Name="Ciudad" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Ventas">
+    <Key>
+      <PropertyRef Name="Cod_Venta" />
+    </Key>
+    <Property Name="Cod_Venta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cod_Empleado" Type="int" />
+    <Property Name="Cod_Cliente" Type="int" />
+    <Property Name="Fecha" Type="date" />
+  </EntityType>
+  <Association Name="FK__Almacen__Cod_Pro__30F848ED">
+    <End Role="Productos" Type="Self.Productos" Multiplicity="0..1" />
+    <End Role="Almacen" Type="Self.Almacen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Productos">
+        <PropertyRef Name="Cod_Producto" />
+      </Principal>
+      <Dependent Role="Almacen">
+        <PropertyRef Name="Cod_Producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Almacen__Cod_Suc__300424B4">
+    <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="0..1" />
+    <End Role="Almacen" Type="Self.Almacen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sucursal">
+        <PropertyRef Name="Cod_Sucursal" />
+      </Principal>
+      <Dependent Role="Almacen">
+        <PropertyRef Name="Cod_Sucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cotizacio__Cod_P__3B75D760">
+    <End Role="Productos" Type="Self.Productos" Multiplicity="0..1" />
+    <End Role="Cotizaciones" Type="Self.Cotizaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Productos">
+        <PropertyRef Name="Cod_Producto" />
+      </Principal>
+      <Dependent Role="Cotizaciones">
+        <PropertyRef Name="Cod_Producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DetalleVe__Cod_P__38996AB5">
+    <End Role="Productos" Type="Self.Productos" Multiplicity="0..1" />
+    <End Role="DetalleVenta" Type="Self.DetalleVenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Productos">
+        <PropertyRef Name="Cod_Producto" />
+      </Principal>
+      <Dependent Role="DetalleVenta">
+        <PropertyRef Name="Cod_Producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DetalleVe__Cod_V__37A5467C">
+    <End Role="Ventas" Type="Self.Ventas" Multiplicity="0..1" />
+    <End Role="DetalleVenta" Type="Self.DetalleVenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ventas">
+        <PropertyRef Name="Cod_Venta" />
+      </Principal>
+      <Dependent Role="DetalleVenta">
+        <PropertyRef Name="Cod_Venta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Empleados__Cod_S__2D27B809">
+    <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="0..1" />
+    <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sucursal">
+        <PropertyRef Name="Cod_Sucursal" />
+      </Principal>
+      <Dependent Role="Empleados">
+        <PropertyRef Name="Cod_Sucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ventas__Cod_Clie__34C8D9D1">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+    <End Role="Ventas" Type="Self.Ventas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="Cod_Cliente" />
+      </Principal>
+      <Dependent Role="Ventas">
+        <PropertyRef Name="Cod_Cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ventas__Cod_Empl__33D4B598">
+    <End Role="Empleados" Type="Self.Empleados" Multiplicity="0..1" />
+    <End Role="Ventas" Type="Self.Ventas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleados">
+        <PropertyRef Name="Cod_Empleado" />
+      </Principal>
+      <Dependent Role="Ventas">
+        <PropertyRef Name="Cod_Empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BajaIndustrialesModelStoreContainer">
+    <EntitySet Name="Almacen" EntityType="Self.Almacen" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cotizaciones" EntityType="Self.Cotizaciones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DetalleVenta" EntityType="Self.DetalleVenta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Empleados" EntityType="Self.Empleados" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Productos" EntityType="Self.Productos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sucursal" EntityType="Self.Sucursal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ventas" EntityType="Self.Ventas" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Almacen__Cod_Pro__30F848ED" Association="Self.FK__Almacen__Cod_Pro__30F848ED">
+      <End Role="Productos" EntitySet="Productos" />
+      <End Role="Almacen" EntitySet="Almacen" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Almacen__Cod_Suc__300424B4" Association="Self.FK__Almacen__Cod_Suc__300424B4">
+      <End Role="Sucursal" EntitySet="Sucursal" />
+      <End Role="Almacen" EntitySet="Almacen" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cotizacio__Cod_P__3B75D760" Association="Self.FK__Cotizacio__Cod_P__3B75D760">
+      <End Role="Productos" EntitySet="Productos" />
+      <End Role="Cotizaciones" EntitySet="Cotizaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DetalleVe__Cod_P__38996AB5" Association="Self.FK__DetalleVe__Cod_P__38996AB5">
+      <End Role="Productos" EntitySet="Productos" />
+      <End Role="DetalleVenta" EntitySet="DetalleVenta" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DetalleVe__Cod_V__37A5467C" Association="Self.FK__DetalleVe__Cod_V__37A5467C">
+      <End Role="Ventas" EntitySet="Ventas" />
+      <End Role="DetalleVenta" EntitySet="DetalleVenta" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Empleados__Cod_S__2D27B809" Association="Self.FK__Empleados__Cod_S__2D27B809">
+      <End Role="Sucursal" EntitySet="Sucursal" />
+      <End Role="Empleados" EntitySet="Empleados" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ventas__Cod_Clie__34C8D9D1" Association="Self.FK__Ventas__Cod_Clie__34C8D9D1">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Ventas" EntitySet="Ventas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ventas__Cod_Empl__33D4B598" Association="Self.FK__Ventas__Cod_Empl__33D4B598">
+      <End Role="Empleados" EntitySet="Empleados" />
+      <End Role="Ventas" EntitySet="Ventas" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

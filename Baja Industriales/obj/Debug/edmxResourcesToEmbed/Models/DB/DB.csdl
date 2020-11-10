@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BajaIndustrialesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Almacen">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cod_Sucursal" Type="Int32" />
+    <Property Name="Cod_Producto" Type="Int32" />
+    <Property Name="Stock" Type="Int32" />
+    <NavigationProperty Name="Producto" Relationship="Self.FK__Almacen__Cod_Pro__2E1BDC42" FromRole="Almacen" ToRole="Productos" />
+    <NavigationProperty Name="Sucursal" Relationship="Self.FK__Almacen__Cod_Suc__2D27B809" FromRole="Almacen" ToRole="Sucursal" />
+  </EntityType>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="Cod_Cliente" />
+    </Key>
+    <Property Name="Cod_Cliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Telefono" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Ventas" Relationship="Self.FK__Ventas__Cod_Clie__31EC6D26" FromRole="Cliente" ToRole="Ventas" />
+    <Property Name="RFC" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Cotizacione">
+    <Key>
+      <PropertyRef Name="Folio" />
+    </Key>
+    <Property Name="Folio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre_Cliente" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Cod_Venta" Type="Int32" />
+    <Property Name="Cantidad" Type="Int32" />
+    <Property Name="Total" Type="Int32" />
+    <NavigationProperty Name="Venta" Relationship="Self.FK__Cotizacio__Cod_V__38996AB5" FromRole="Cotizaciones" ToRole="Ventas" />
+  </EntityType>
+  <EntityType Name="DetalleVenta">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cod_Venta" Type="Int32" />
+    <Property Name="Cod_Producto" Type="Int32" />
+    <Property Name="Cantidad" Type="Int32" />
+    <Property Name="Precio" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="IVA" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="Producto" Relationship="Self.FK__DetalleVe__Cod_P__35BCFE0A" FromRole="DetalleVenta" ToRole="Productos" />
+    <NavigationProperty Name="Venta" Relationship="Self.FK__DetalleVe__Cod_V__34C8D9D1" FromRole="DetalleVenta" ToRole="Ventas" />
+  </EntityType>
+  <EntityType Name="Empleado">
+    <Key>
+      <PropertyRef Name="Cod_Empleado" />
+    </Key>
+    <Property Name="Cod_Empleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tipo_Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Contraseña" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A_Paterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="A_Materno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Telefono" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Cod_Sucursal" Type="Int32" />
+    <NavigationProperty Name="Sucursal" Relationship="Self.FK__Empleados__Cod_S__2A4B4B5E" FromRole="Empleados" ToRole="Sucursal" />
+    <NavigationProperty Name="Ventas" Relationship="Self.FK__Ventas__Cod_Empl__30F848ED" FromRole="Empleados" ToRole="Ventas" />
+  </EntityType>
+  <EntityType Name="Producto">
+    <Key>
+      <PropertyRef Name="Cod_Producto" />
+    </Key>
+    <Property Name="Cod_Producto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Precio" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="Almacens" Relationship="Self.FK__Almacen__Cod_Pro__2E1BDC42" FromRole="Productos" ToRole="Almacen" />
+    <NavigationProperty Name="DetalleVentas" Relationship="Self.FK__DetalleVe__Cod_P__35BCFE0A" FromRole="Productos" ToRole="DetalleVenta" />
+  </EntityType>
+  <EntityType Name="Sucursal">
+    <Key>
+      <PropertyRef Name="Cod_Sucursal" />
+    </Key>
+    <Property Name="Cod_Sucursal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ubicacicon" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Ciudad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Almacens" Relationship="Self.FK__Almacen__Cod_Suc__2D27B809" FromRole="Sucursal" ToRole="Almacen" />
+    <NavigationProperty Name="Empleados" Relationship="Self.FK__Empleados__Cod_S__2A4B4B5E" FromRole="Sucursal" ToRole="Empleados" />
+  </EntityType>
+  <EntityType Name="Venta">
+    <Key>
+      <PropertyRef Name="Cod_Venta" />
+    </Key>
+    <Property Name="Cod_Venta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cod_Empleado" Type="Int32" />
+    <Property Name="Cod_Cliente" Type="Int32" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Cliente" Relationship="Self.FK__Ventas__Cod_Clie__31EC6D26" FromRole="Ventas" ToRole="Cliente" />
+    <NavigationProperty Name="Cotizaciones" Relationship="Self.FK__Cotizacio__Cod_V__38996AB5" FromRole="Ventas" ToRole="Cotizaciones" />
+    <NavigationProperty Name="DetalleVentas" Relationship="Self.FK__DetalleVe__Cod_V__34C8D9D1" FromRole="Ventas" ToRole="DetalleVenta" />
+    <NavigationProperty Name="Empleado" Relationship="Self.FK__Ventas__Cod_Empl__30F848ED" FromRole="Ventas" ToRole="Empleados" />
+  </EntityType>
+  <EntityType Name="VistaInventario">
+    <Key>
+      <PropertyRef Name="Cod_Producto" />
+    </Key>
+    <Property Name="Cod_Producto" Type="Int32" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Precio" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Stock" Type="Int32" />
+  </EntityType>
+  <Association Name="FK__Almacen__Cod_Pro__2E1BDC42">
+    <End Role="Productos" Type="Self.Producto" Multiplicity="0..1" />
+    <End Role="Almacen" Type="Self.Almacen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Productos">
+        <PropertyRef Name="Cod_Producto" />
+      </Principal>
+      <Dependent Role="Almacen">
+        <PropertyRef Name="Cod_Producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Almacen__Cod_Suc__2D27B809">
+    <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="0..1" />
+    <End Role="Almacen" Type="Self.Almacen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sucursal">
+        <PropertyRef Name="Cod_Sucursal" />
+      </Principal>
+      <Dependent Role="Almacen">
+        <PropertyRef Name="Cod_Sucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ventas__Cod_Clie__31EC6D26">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+    <End Role="Ventas" Type="Self.Venta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="Cod_Cliente" />
+      </Principal>
+      <Dependent Role="Ventas">
+        <PropertyRef Name="Cod_Cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cotizacio__Cod_V__38996AB5">
+    <End Role="Ventas" Type="Self.Venta" Multiplicity="0..1" />
+    <End Role="Cotizaciones" Type="Self.Cotizacione" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ventas">
+        <PropertyRef Name="Cod_Venta" />
+      </Principal>
+      <Dependent Role="Cotizaciones">
+        <PropertyRef Name="Cod_Venta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DetalleVe__Cod_P__35BCFE0A">
+    <End Role="Productos" Type="Self.Producto" Multiplicity="0..1" />
+    <End Role="DetalleVenta" Type="Self.DetalleVenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Productos">
+        <PropertyRef Name="Cod_Producto" />
+      </Principal>
+      <Dependent Role="DetalleVenta">
+        <PropertyRef Name="Cod_Producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DetalleVe__Cod_V__34C8D9D1">
+    <End Role="Ventas" Type="Self.Venta" Multiplicity="0..1" />
+    <End Role="DetalleVenta" Type="Self.DetalleVenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ventas">
+        <PropertyRef Name="Cod_Venta" />
+      </Principal>
+      <Dependent Role="DetalleVenta">
+        <PropertyRef Name="Cod_Venta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Empleados__Cod_S__2A4B4B5E">
+    <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="0..1" />
+    <End Role="Empleados" Type="Self.Empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sucursal">
+        <PropertyRef Name="Cod_Sucursal" />
+      </Principal>
+      <Dependent Role="Empleados">
+        <PropertyRef Name="Cod_Sucursal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ventas__Cod_Empl__30F848ED">
+    <End Role="Empleados" Type="Self.Empleado" Multiplicity="0..1" />
+    <End Role="Ventas" Type="Self.Venta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleados">
+        <PropertyRef Name="Cod_Empleado" />
+      </Principal>
+      <Dependent Role="Ventas">
+        <PropertyRef Name="Cod_Empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BajaIndustrialesEntities2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Almacens" EntityType="Self.Almacen" />
+    <EntitySet Name="Clientes" EntityType="Self.Cliente" />
+    <EntitySet Name="Cotizaciones" EntityType="Self.Cotizacione" />
+    <EntitySet Name="DetalleVentas" EntityType="Self.DetalleVenta" />
+    <EntitySet Name="Empleados" EntityType="Self.Empleado" />
+    <EntitySet Name="Productos" EntityType="Self.Producto" />
+    <EntitySet Name="Sucursals" EntityType="Self.Sucursal" />
+    <EntitySet Name="Ventas" EntityType="Self.Venta" />
+    <EntitySet Name="VistaInventarios" EntityType="Self.VistaInventario" />
+    <AssociationSet Name="FK__Almacen__Cod_Pro__2E1BDC42" Association="Self.FK__Almacen__Cod_Pro__2E1BDC42">
+      <End Role="Productos" EntitySet="Productos" />
+      <End Role="Almacen" EntitySet="Almacens" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Almacen__Cod_Suc__2D27B809" Association="Self.FK__Almacen__Cod_Suc__2D27B809">
+      <End Role="Sucursal" EntitySet="Sucursals" />
+      <End Role="Almacen" EntitySet="Almacens" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ventas__Cod_Clie__31EC6D26" Association="Self.FK__Ventas__Cod_Clie__31EC6D26">
+      <End Role="Cliente" EntitySet="Clientes" />
+      <End Role="Ventas" EntitySet="Ventas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cotizacio__Cod_V__38996AB5" Association="Self.FK__Cotizacio__Cod_V__38996AB5">
+      <End Role="Ventas" EntitySet="Ventas" />
+      <End Role="Cotizaciones" EntitySet="Cotizaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DetalleVe__Cod_P__35BCFE0A" Association="Self.FK__DetalleVe__Cod_P__35BCFE0A">
+      <End Role="Productos" EntitySet="Productos" />
+      <End Role="DetalleVenta" EntitySet="DetalleVentas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DetalleVe__Cod_V__34C8D9D1" Association="Self.FK__DetalleVe__Cod_V__34C8D9D1">
+      <End Role="Ventas" EntitySet="Ventas" />
+      <End Role="DetalleVenta" EntitySet="DetalleVentas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Empleados__Cod_S__2A4B4B5E" Association="Self.FK__Empleados__Cod_S__2A4B4B5E">
+      <End Role="Sucursal" EntitySet="Sucursals" />
+      <End Role="Empleados" EntitySet="Empleados" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ventas__Cod_Empl__30F848ED" Association="Self.FK__Ventas__Cod_Empl__30F848ED">
+      <End Role="Empleados" EntitySet="Empleados" />
+      <End Role="Ventas" EntitySet="Ventas" />
+    </AssociationSet>
+    <EntitySet Name="VistaVentas" EntityType="BajaIndustrialesModel.VistaVenta" />
+  </EntityContainer>
+  <EntityType Name="VistaVenta">
+    <Key>
+      <PropertyRef Name="Cod_Venta" />
+    </Key>
+    <Property Name="Cod_Venta" Type="Int32" Nullable="false" />
+    <Property Name="Cod_Empleado" Type="Int32" />
+    <Property Name="Cod_Producto" Type="Int32" />
+    <Property Name="Cantidad" Type="Int32" />
+    <Property Name="Precio" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="IVA" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Total" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
+  </EntityType>
+</Schema>

@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Informes";
+}
+
+<h2>Informes</h2>
+<div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+        <li>@Html.ActionLink("Ventas por día", "VDia", "Informes")</li>
+        <li>@Html.ActionLink("Ventas por fecha", "VFecha", "Informes")</li>
+        <li>@Html.ActionLink("Cotizaciones", "Cotizaciones", "Informes")</li>
+    </ul>
+</div>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Titulo de la web</title>
+    <style type="text/css">
+        img {
+            width: 796px;
+            height: 299px;
+            margin-top: -23px;
+            margin-left: -163px;
+            left: 35%;
+            top: 50%;
+            position: absolute;
+        }
+    </style>
+</head>
+<footer>
+    <center><img src="~/Imagenes/Untitled.png" /></center>
+</footer>

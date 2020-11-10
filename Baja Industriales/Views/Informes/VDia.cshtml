@@ -1,0 +1,46 @@
+﻿@model List<Baja_Industriales.Models.View_Model.ListVentasViewModel>
+@{
+    ViewBag.Title = "VDia";
+}
+
+<h2>Ventas por día</h2>
+<div>
+    <pre>
+    <label for="start">Fecha:</label>  <input type="date" id="start" name="trip-start">                                                       <label class="control-label" for="form-group-select">Cantidad de ventas:</label><input id="cantventas" type="text" size="5" maxlength="10" />             <label class="control-label" for="form-group-select">Total de ventas:</label><input id="totalventas" type="text" size="5" maxlength="10" />
+
+
+        
+    <input class="btn btn-n" id="Modificar" type="button" value="Modificar" />      <input class="btn btn-n" id="Buscar" type="button" value="Buscar" />    <input class="btn btn-n" id="Exportar" type="button" value="Exportar" />
+
+    </pre>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <tr>
+                <th>Cod_Venta</th>
+                <th>Cod_Empleado</th>
+                <th>Cod_Producto</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
+                <th>IVA</th>
+                <th>Total</th>
+                <th>Fecha</th>
+            </tr>
+            @foreach (var oElemento in Model)
+            {
+                <tr>
+                    <td>@oElemento.Cod_Venta</td>
+                    <td>@oElemento.Cod_Empleado</td>
+                    <td>@oElemento.Cod_Producto</td>
+                    <td>@oElemento.Cantidad</td>
+                    <td>@oElemento.Precio</td>
+                    <td>@oElemento.IVA</td>
+                    <td>@oElemento.Total</td>
+                    <td>@oElemento.Fecha</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
